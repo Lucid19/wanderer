@@ -1,7 +1,6 @@
 // API
 const {REST} = require("@discordjs/rest")
 const {Routes} = require("discord-api-types/v9");
-const { Guild } = require("discord.js");
 
 const config = require("../config.json")
 
@@ -20,7 +19,7 @@ module.exports = {
         }).setToken(config.token)
 
         // registering commands
-        async() => {
+        (async() => {
             try{
                 // for guild
                 await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
@@ -31,7 +30,7 @@ module.exports = {
             catch(err){
                 if(err)console.error(err)
             }
-        }
+        })
 
     }
 }
