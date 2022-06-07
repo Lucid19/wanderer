@@ -30,5 +30,6 @@ module.exports = {
         catch(err){
             if(err)console.error(err)
         }}
+        commandRegister()
     }
 }
