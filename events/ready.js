@@ -7,7 +7,7 @@ const config = require("../config.json")
 module.exports = {
     name : "ready",
     once : true,
-    execute(client, commands){
+    async execute(client, commands){
         console.log("bot is ready!");
 
         // user
@@ -19,8 +19,7 @@ module.exports = {
         }).setToken(config.token)
 
         // registering commands
-        commandRegister = async()=> {
-            try{
+        try{
             // for guild
             await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
                 body: commands
@@ -29,7 +28,6 @@ module.exports = {
         }
         catch(err){
             if(err)console.error(err)
-        }}
-        commandRegister()
+        }
     }
 }
