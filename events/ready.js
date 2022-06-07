@@ -17,9 +17,9 @@ module.exports = {
         const rest = new REST({
             version : "9"
         }).setToken(config.token)
-
+        
         // registering commands
-        commandRegister(async() => {
+        await (async() => {
             try{
                 // for guild
                 await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
