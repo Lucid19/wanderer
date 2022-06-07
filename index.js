@@ -14,12 +14,12 @@ client.commands = new Collection()
 // Events
 const eventFiles = fs.readdirSync("./events").filter(file => file.endsWith(".js"))
 
-// // loading command files 
-// for(const file of commandFiles){
-//     const command = require(`./commands/${file}`)
-//     commands.push(command.data.toJSON())
-//     client.commands.set(command.data.name, command)
-// }
+// loading command files 
+for(const file of commandFiles){
+    const command = require(`./commands/${file}`)
+    commands.push(command.data.toJSON())
+    client.commands.set(command.data.name, command)
+}
 
 // loading event files
 for(const file of eventFiles){
