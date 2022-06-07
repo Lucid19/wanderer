@@ -19,7 +19,7 @@ module.exports = {
         }).setToken(config.token)
 
         // registering commands
-        (async() => {
+        commandRegister(async() => {
             try{
                 // for guild
                 await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
