@@ -3,9 +3,9 @@ const fs = require("fs")
 const { MongoClient } = require("mongodb")
 const Markov = require("js-markov")
 const config = require("./config.json")
+const cron = require("cron")
 
 const markov = new Markov()
-var UTC = new Date().toUTCString()
 
 // client
 const { Client, Intents, Collection} = require("discord.js")
@@ -42,8 +42,6 @@ for(const file of eventFiles){
 }
 client.login(config.token)
 
-async function main() {
-    console.log(UTC)
-    await main()
-}
-await main()
+let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
+    return
+})
