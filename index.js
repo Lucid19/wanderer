@@ -4,7 +4,7 @@ const { MongoClient } = require("mongodb")
 const Markov = require("js-markov")
 const config = require("./config.json")
 
-const Markov = new Markov()
+const markov = new Markov()
 
 // client
 const { Client, Intents, Collection} = require("discord.js")
