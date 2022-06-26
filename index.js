@@ -5,6 +5,7 @@ const Markov = require("js-markov")
 const config = require("./config.json")
 
 const markov = new Markov()
+var UTC = new Date().toUTCString()
 
 // client
 const { Client, Intents, Collection} = require("discord.js")
