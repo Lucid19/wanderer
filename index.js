@@ -41,4 +41,9 @@ for(const file of eventFiles){
     }
 }
 client.login(config.token)
-console.log(UTC)
+
+function main(){
+    console.log(UTC)
+}
+
+main()
