@@ -42,8 +42,8 @@ for(const file of eventFiles){
 }
 client.login(config.token)
 
-function main() {
+async function main() {
     console.log(UTC)
-    main()
+    await main()
 }
-main()
+await main()
