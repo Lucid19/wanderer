@@ -40,8 +40,9 @@ for(const file of eventFiles){
         client.on(event.name, (...args) => event.execute(...args, commands))
     }
 }
-client.login(config.token)
 
 let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
     return
 })
+
+client.login(config.token)
