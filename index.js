@@ -74,4 +74,27 @@ let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
 })
 autoGenerateChannels.start()
 
+var members = guild.members.fetch()
+
+    members.each((member) => {
+        let channelNumber = String(Math.ceil(Math.random() * 100))
+        var channel = guild.channels.find(channel => channel.name === channelNumber)
+
+        if(!channel){
+            guild.channels.create(channelNumber, {
+                type: "GUILD TEXT",
+                parent: config.levelID,
+                permissionOverwrite: {
+                    id: config.GuildID,
+                    deny: [Permissions.FLAGS.VIEW_CHANNEL]
+                }
+            })
+        }
+        var channel = guild.channels.find(channel => channel.name === channelNumber)
+        channel.updateOverwrite(member, {
+            VIEW_CHANNEL : true
+        })
+
+    })
+
 client.login(config.token)
