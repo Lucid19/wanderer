@@ -50,7 +50,7 @@ module.exports = {
                 })
             }
             var channel = guild.channels.cache.get(channel => channel.name === channelNumber)
-            channel.updateOverwrite(member, {
+            channel.permissionsFor(member, {
                 VIEW_CHANNEL : true
             })
          
