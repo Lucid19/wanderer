@@ -13,7 +13,11 @@ module.exports = {
 
         // user
         const CLIENT_ID = client.user.id
-        const guild = client.guilds.cache.get(config.GuildID)
+        const guild = client.guilds.cache.get(config.GuildID) 
+        
+        // Channels
+        const category = guild.channels.cache.get(config.levelID)
+        const maxChannels = 30
 
         // REST API
         const rest = new REST({
@@ -32,29 +36,23 @@ module.exports = {
             if(err)console.error(err)
         }
 
-        // functions
-        
-
         // starting up jobs
         var members = await guild.members.fetch()
         let channelID = []
-        let channel = false
 
-        members.forEach((member) => {
-            let channelNumber = String(Math.ceil(Math.random() * 30))
-        
-            let result = guild.channels.create(channelNumber, {
+        category.children.forEach(channel => channel.delete())
+        for(let i = 0; i < maxChannels; i++){
+            guild.channels.create(String(i), {
                 type: "GUILD TEXT",
                 parent: config.levelID,
                 permissionOverwrite: {
                     id: config.GuildID,
                     deny: [PermissionFlagsBits.ViewChannel]
-                }
-            }).then(results => {return guild.channels.fetch(results.id)})
-
-            console.log(result)
-         
+                }})
+        }
+        console.log(guild.channels.cache.find(channel => channel.name === "20"))
+        members.forEach((member) => {
+            let channelNumber = String(Math.ceil(Math.random() * maxChannels))
         })
-        channel = false
     }
 }
