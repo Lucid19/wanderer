@@ -14,6 +14,8 @@ const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_ME
 // Database
 const clientDB = new MongoClient(config.uri);
 
+client.guilds.cache.get().channels.cache.get().permissionsFor()
+
 // Commands
 const commandFiles =  fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
 const commands = []
