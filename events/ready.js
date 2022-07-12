@@ -40,14 +40,14 @@ module.exports = {
             let channel = false
         
             if(!channel){
-                guild.channels.create(channelNumber, {
+                let channelID = guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
                     parent: config.levelID,
                     permissionOverwrite: {
                         id: config.GuildID,
                         deny: [Permissions.FLAGS.VIEW_CHANNEL]
                     }
-                }).then(result => {console.log(result)})
+                }).resolve(channelID.id)
             }
          
         })
