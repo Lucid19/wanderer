@@ -39,23 +39,15 @@ module.exports = {
         let channelID = []
         let channel = false
 
-        members.forEach((member) => {
-            let channelNumber = String(Math.ceil(Math.random() * 100))
-            console.log(channelID)
-            if(!channel){
-                let result = guild.channels.create(channelNumber, {
-                    type: "GUILD TEXT",
-                    parent: config.levelID,
-                    permissionOverwrite: {
-                        id: config.GuildID,
-                        deny: [PermissionFlagsBits.ViewChannel]
-                    }
-                })
-                let {id} = result
-                channelID.push(id)
+        let result = guild.channels.create("23", {
+            type: "GUILD TEXT",
+            parent: config.levelID,
+            permissionOverwrite: {
+                id: config.GuildID,
+                deny: [PermissionFlagsBits.ViewChannel]
             }
-            channel = false
-         
         })
+        let {id} = result
+        channelID.push(id)
     }
 }
