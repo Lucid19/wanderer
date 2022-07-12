@@ -34,7 +34,7 @@ module.exports = {
 
         // starting up jobs
         var members = await guild.members.fetch()
-        var channel = guild.channels.cache.get(985988279629406232)
+        var channel = guild.channels.cache
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
