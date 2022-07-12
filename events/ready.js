@@ -34,10 +34,10 @@ module.exports = {
 
         // starting up jobs
         var members = await guild.members.fetch()
-        var channel = guild.channels.cache.find(channel => channel.name === "tree-stump")
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
+            let channel = guild.channels.cache.find(channel => channel.name === channelNumber)
         
             if(!channel){
                 guild.channels.create(channelNumber, {
