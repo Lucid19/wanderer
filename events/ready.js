@@ -33,7 +33,7 @@ module.exports = {
 
         // starting up jobs
         var members = await guild.members.fetch()
-        var channelID = []
+        let channelID = []
         let channel = false
 
         members.forEach((member) => {
