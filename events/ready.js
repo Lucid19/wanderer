@@ -29,5 +29,32 @@ module.exports = {
         catch(err){
             if(err)console.error(err)
         }
+
+        // starting up jobs
+        client.login(config.token)
+
+        const guild = client.guilds.cache.get(config.GuildID)
+        var member = guild.members.fetch()
+         
+        member.each((member) => {
+            let channelNumber = String(Math.ceil(Math.random() * 100))
+            var channel = guild.channels.find(channel => channel.name === channelNumber)
+         
+            if(!channel){
+                guild.channels.create(channelNumber, {
+                    type: "GUILD TEXT",
+                    parent: config.levelID,
+                    permissionOverwrite: {
+                        id: config.GuildID,
+                        deny: [Permissions.FLAGS.VIEW_CHANNEL]
+                    }
+                })
+            }
+            var channel = guild.channels.find(channel => channel.name === channelNumber)
+            channel.updateOverwrite(member, {
+                VIEW_CHANNEL : true
+            })
+         
+        })
     }
 }
