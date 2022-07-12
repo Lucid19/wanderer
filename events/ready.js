@@ -36,7 +36,7 @@ module.exports = {
         const guild = client.guilds.cache.get(config.GuildID)
         var member = guild.members.fetch()
          
-        member.each((member) => {
+        member.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
             var channel = guild.channels.find(channel => channel.name === channelNumber)
          
