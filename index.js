@@ -13,9 +13,9 @@ const maxChannels = 100
 
 // client
 const { Client, Intents, Collection, Message} = require("discord.js")
-const { randomBytes } = require("crypto")
 const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS]})
-const guild = client.guilds.fetch(config.GuildID)
+const guild = client.guilds.cache.get(config.GuildID)
+
 
 // Database
 const clientDB = new MongoClient(config.uri);
@@ -76,25 +76,25 @@ autoGenerateChannels.start()
 
 var members = guild.members.fetch()
 
-    members.each((member) => {
-        let channelNumber = String(Math.ceil(Math.random() * 100))
-        var channel = guild.channels.find(channel => channel.name === channelNumber)
+members.each((member) => {
+    let channelNumber = String(Math.ceil(Math.random() * 100))
+    var channel = guild.channels.find(channel => channel.name === channelNumber)
 
-        if(!channel){
-            guild.channels.create(channelNumber, {
-                type: "GUILD TEXT",
-                parent: config.levelID,
-                permissionOverwrite: {
-                    id: config.GuildID,
-                    deny: [Permissions.FLAGS.VIEW_CHANNEL]
-                }
-            })
-        }
-        var channel = guild.channels.find(channel => channel.name === channelNumber)
-        channel.updateOverwrite(member, {
-            VIEW_CHANNEL : true
+    if(!channel){
+        guild.channels.create(channelNumber, {
+            type: "GUILD TEXT",
+            parent: config.levelID,
+            permissionOverwrite: {
+                id: config.GuildID,
+                deny: [Permissions.FLAGS.VIEW_CHANNEL]
+            }
         })
-
+    }
+    var channel = guild.channels.find(channel => channel.name === channelNumber)
+    channel.updateOverwrite(member, {
+        VIEW_CHANNEL : true
     })
+
+})
 
 client.login(config.token)
