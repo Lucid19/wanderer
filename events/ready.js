@@ -39,9 +39,8 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
             for(var id in channelID){
-                let yeah = guild.channels.fetch(id).name
-                console.log(yeah)
-                if(yeah === channelNumber){
+                console.log(channelID)
+                if(guild.channels.fetch(id).name === channelNumber){
                     channel = true
                 }
             }
