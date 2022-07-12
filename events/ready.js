@@ -34,11 +34,11 @@ module.exports = {
 
         // starting up jobs
         var members = await guild.members.fetch()
-        var channel = await guild.channels.fetch()
+        var channel = guild.channels.cache.get()
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
-         
+        
             if(!channel){
                 guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
