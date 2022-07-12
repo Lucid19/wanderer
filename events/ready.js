@@ -39,22 +39,17 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
             console.log(channelID)
-            for(var id in channelID){
-                if(guild.channels.fetch(id).name === channelNumber){
-                    channel = true
-                }
-            }
         
             if(!channel){
-                let channelPP = guild.channels.create(channelNumber, {
+                let result = new Promise((resolve) => guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
                     parent: config.levelID,
                     permissionOverwrite: {
                         id: config.GuildID,
                         deny: [PermissionFlagsBits.ViewChannel]
                     }
-                }).then(result => {return result.id})
-                channelID.push(channelPP)
+                }).then(result => {return resolve(result.id)}))
+                channelID.push(result)
             }
          
         })
