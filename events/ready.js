@@ -49,6 +49,7 @@ module.exports = {
                     }
                 })
             }
+            channel = guild.channels.cache.find(channel => channel.name === channelNumber)
             console.log(channel)
          
         })
