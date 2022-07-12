@@ -47,7 +47,7 @@ module.exports = {
                 parent: config.levelID,
                 permissionOverwrite: {
                     id: config.GuildID,
-                    deny: [PermissionFlagsBits.ViewChannel]
+                    deny: ["VIEW_CHANNEL"]
                 }})
         }
         console.log(guild.channels.cache.find(channel => channel.name === "20"))
