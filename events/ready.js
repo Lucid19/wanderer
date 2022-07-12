@@ -58,7 +58,8 @@ module.exports = {
             }
         
             if(!channel){
-                createChannel(channelNumber).then(result => channelID.push(result.id))
+                let result = createChannel(channelNumber).then(result => {return result.id})
+                channelID.push(result)
             }
          
         })
