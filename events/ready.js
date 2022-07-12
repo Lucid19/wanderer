@@ -30,6 +30,17 @@ module.exports = {
         catch(err){
             if(err)console.error(err)
         }
+        // functions
+        function createChannel(channelNumber){
+            new Promise((resolve) => guild.channels.create(channelNumber, {
+                type: "GUILD TEXT",
+                parent: config.levelID,
+                permissionOverwrite: {
+                    id: config.GuildID,
+                    deny: [PermissionFlagsBits.ViewChannel]
+                }
+            }).then(result => {return resolve(result.id)}))
+        }
 
         // starting up jobs
         var members = await guild.members.fetch()
@@ -41,14 +52,7 @@ module.exports = {
             console.log(channelID)
         
             if(!channel){
-                let result = await new Promise((resolve) => guild.channels.create(channelNumber, {
-                    type: "GUILD TEXT",
-                    parent: config.levelID,
-                    permissionOverwrite: {
-                        id: config.GuildID,
-                        deny: [PermissionFlagsBits.ViewChannel]
-                    }
-                }).then(result => {return resolve(result.id)}))
+                result = createChannel(channelNumber)
                 channelID.push(result)
             }
          
