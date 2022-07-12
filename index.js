@@ -50,7 +50,7 @@ for(const file of eventFiles){
 let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
     var members = guild.members.fetch()
 
-    members.each((member) => {
+    members.forEach((member) => {
         let channelNumber = String(Math.ceil(Math.random() * 100))
         var channel = guild.channels.find(channel => channel.name === channelNumber)
 
@@ -70,7 +70,6 @@ let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
         })
 
     })
-         
 })
 autoGenerateChannels.start()
 
