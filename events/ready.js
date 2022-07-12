@@ -50,9 +50,11 @@ module.exports = {
                     deny: ["VIEW_CHANNEL"]
                 }})
         }
-        console.log(guild.channels.cache.find(channel => channel.name === "20"))
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
+            let channel = guild.channels.cache.find(channel => channel.name === channelNumber)
+
+            channel.overwritePermissions(member, { VIEW_MESSAGES: true})
         })
     }
 }
