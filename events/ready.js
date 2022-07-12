@@ -49,7 +49,7 @@ module.exports = {
                     }
                 })
             }
-            var channel = guild.channels.find(channel => channel.name === channelNumber)
+            var channel = guild.channels.cache.get(channel => channel.name === channelNumber)
             channel.updateOverwrite(member, {
                 VIEW_CHANNEL : true
             })
