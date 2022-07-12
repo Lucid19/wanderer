@@ -47,7 +47,7 @@ module.exports = {
                         id: config.GuildID,
                         deny: [Permissions.FLAGS.VIEW_CHANNEL]
                     }
-                }).resolve(channelID.id)
+                }).resolve(result => result.id)
             }
          
         })
