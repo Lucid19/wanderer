@@ -49,5 +49,6 @@ module.exports = {
         })
         let {id} = result
         channelID.push(id)
+        console.log(channelID)
     }
 }
