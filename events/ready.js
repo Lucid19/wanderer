@@ -1,7 +1,6 @@
 // API
 const {REST} = require("@discordjs/rest")
-const {Routes} = require("discord-api-types/v9");
-const { Permissions} = require("discord.js")
+const {Routes, PermissionFlagsBits} = require("discord-api-types/v9");
 
 const config = require("../config.json")
 
@@ -34,22 +33,29 @@ module.exports = {
 
         // starting up jobs
         var members = await guild.members.fetch()
+        var channelID = []
+        let channel = false
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
-            let channel = false
+            for(var id in channelID){
+                if(await guild.channels.fetch(id).name === channelNumber){
+                    channel = true
+                }
+            }
         
             if(!channel){
-                let channelID = guild.channels.create(channelNumber, {
+                guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
                     parent: config.levelID,
                     permissionOverwrite: {
                         id: config.GuildID,
-                        deny: [Permissions.FLAGS.VIEW_CHANNEL]
+                        deny: [PermissionFlagsBits.ViewChannel]
                     }
-                }).then(result => {return result.id})
+                }).then(result => {channelID.push(result.id)})
             }
          
         })
+        channel = false
     }
 }
