@@ -1,5 +1,6 @@
 {
     "token" : "OTgwNDk0NjI0NTI1MjU0NzY2.GlAMOe.OlsRLsiJdp2RzZN4VerDzAXzfNR9J4g3dfzMys",
     "GuildID" : "980495793070948402",
-    "uri" : "mongodb+srv://Lucid19:<password>@cluster0.ifoi4nq.mongodb.net/?retryWrites=true&w=majority"
+    "uri" : "mongodb+srv://Lucid19:<password>@cluster0.ifoi4nq.mongodb.net/?retryWrites=true&w=majority",
+    "levelID" : "990696950590488596"
 }

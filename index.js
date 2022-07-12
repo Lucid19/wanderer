@@ -57,6 +57,7 @@ let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
         if(!channel){
             guild.channels.create(channelNumber, {
                 type: "GUILD TEXT",
+                parent: config.levelID,
                 permissionOverwrite: {
                     id: config.GuildID,
                     deny: [Permissions.FLAGS.VIEW_CHANNEL]
@@ -71,5 +72,6 @@ let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
     })
          
 })
+autoGenerateChannels.start()
 
 client.login(config.token)
