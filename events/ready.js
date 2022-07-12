@@ -50,9 +50,7 @@ module.exports = {
                 })
             }
             var channel = guild.channels.cache.get(channel => channel.name === channelNumber)
-            channel.permissionsFor(member, {
-                VIEW_CHANNEL : true
-            })
+            console.log(channel)
          
         })
     }
