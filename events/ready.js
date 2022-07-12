@@ -51,7 +51,7 @@ module.exports = {
                 }
             })
 
-            console.log(guild.channels.cache.find(channel => channel.name === channelNumber))
+            console.log(guild.channels.cache.fetch())
          
         })
         channel = false
