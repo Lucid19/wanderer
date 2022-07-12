@@ -52,7 +52,7 @@ module.exports = {
             console.log(channelID)
         
             if(!channel){
-                result = createChannel(channelNumber)
+                let result = await createChannel(channelNumber)
                 channelID.push(result)
             }
          
