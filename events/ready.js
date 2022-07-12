@@ -37,7 +37,6 @@ module.exports = {
 
         // starting up jobs
         var members = await guild.members.fetch()
-        let channelID = [PermissionFlagsBits.ViewChannel]
 
         category.children.forEach(channel => channel.delete())
         for(let i = 0; i <= maxChannels; i++){
