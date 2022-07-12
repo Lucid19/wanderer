@@ -36,7 +36,7 @@ module.exports = {
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
-            var channel = await guild.channel.cache.get(channel => channel.name === channelNumber)
+            var channel = await guild.channels.cache.get(channel => channel.name === channelNumber)
          
             if(!channel){
                 guild.channels.create(channelNumber, {
