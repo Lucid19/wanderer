@@ -41,7 +41,7 @@ module.exports = {
         let channelID = []
 
         category.children.forEach(channel => channel.delete())
-        for(let i = 0; i < maxChannels; i++){
+        for(let i = 0; i <= maxChannels; i++){
             guild.channels.create(String(i), {
                 type: "GUILD TEXT",
                 parent: config.levelID,
