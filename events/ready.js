@@ -46,7 +46,7 @@ module.exports = {
                 type: "GUILD TEXT",
                 parent: config.levelID,
                 permissionOverwrite: {
-                    id: config.GuildID,
+                    id: config.everyoneID,
                     deny: ["VIEW_CHANNEL"]
                 }})
         }
