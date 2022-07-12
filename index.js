@@ -14,7 +14,7 @@ const maxChannels = 100
 // client
 const { Client, Intents, Collection, Message} = require("discord.js")
 const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS]})
-const guild = client.guilds.cache.get(config.GuildID)
+
 
 
 // Database
@@ -74,6 +74,9 @@ let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
 })
 autoGenerateChannels.start()
 
+client.login(config.token)
+
+const guild = client.guilds.cache.get(config.GuildID)
 var member = guild.members.fetch()
 
 member.each((member) => {
@@ -96,5 +99,3 @@ member.each((member) => {
     })
 
 })
-
-client.login(config.token)
