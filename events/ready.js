@@ -43,15 +43,12 @@ module.exports = {
         for(let i = 0; i <= maxChannels; i++){
             guild.channels.create(String(i), {
                 type: "GUILD TEXT",
-                parent: config.levelID,
-                permissionOverwrite: {
-                    id: config.everyoneID,
-                    deny: [PermissionFlagsBits.ViewChannel]
-                }})
-        }
+                parent: config.levelID
+        })
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
             let channel = guild.channels.cache.find(channel => channel.name === channelNumber)
         })
     }
+}
 }
