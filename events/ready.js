@@ -42,12 +42,6 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
             console.log(channelID)
-            for(var id in channelID){
-                if(guild.channels.fetch(id).name === channelNumber){
-                    channel = true
-                }
-            }
-        
             if(!channel){
                 let result = guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
