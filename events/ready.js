@@ -48,8 +48,8 @@ module.exports = {
                         deny: [Permissions.FLAGS.VIEW_CHANNEL]
                     }
                 })
+                console.log(channelObj)
             }
-            console.log(channelObj)
          
         })
     }
