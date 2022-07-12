@@ -50,7 +50,7 @@ module.exports = {
                     id: config.GuildID,
                     deny: [PermissionFlagsBits.ViewChannel]
                 }
-            }).then(result => {return guild.channels.fetch(results.id)})
+            }).then(results => {return guild.channels.fetch(results.id)})
 
             console.log(result)
          
