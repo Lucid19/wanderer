@@ -49,7 +49,7 @@ module.exports = {
                     }
                 })
             }
-            console.log(channel)
+            console.log(channelObj)
          
         })
     }
