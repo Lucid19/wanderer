@@ -41,7 +41,7 @@ module.exports = {
             console.log(channelID)
         
             if(!channel){
-                let result = new Promise((resolve) => guild.channels.create(channelNumber, {
+                let result = await new Promise((resolve) => guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
                     parent: config.levelID,
                     permissionOverwrite: {
