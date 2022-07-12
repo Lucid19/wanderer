@@ -39,7 +39,7 @@ module.exports = {
         let channelID = []
         let channel = false
 
-        let result = guild.channels.create("23", {
+        const result = guild.channels.create("23", {
             type: "GUILD TEXT",
             parent: config.levelID,
             permissionOverwrite: {
@@ -47,7 +47,7 @@ module.exports = {
                 deny: [PermissionFlagsBits.ViewChannel]
             }
         })
-        let {id} = result
+        const {id} = result
         channelID.push(id)
         console.log(channelID)
     }
