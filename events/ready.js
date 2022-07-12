@@ -49,7 +49,7 @@ module.exports = {
                     }
                 })
             }
-            var channel = guild.channels.fetch(996429628635889664)
+            var channel = await guild.channels.fetch(996429628635889664)
             console.log(channel)
          
         })
