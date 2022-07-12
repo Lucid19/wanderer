@@ -59,7 +59,7 @@ module.exports = {
                 })
                 channelID.push(result.id)
             }
-            console.log(guild.channels.cache.find(channel => channel.name === "tree-stump"))
+            console.log(guild.channels.cache.find(channel => channel.name === "23"))
          
         })
         channel = false
