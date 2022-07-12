@@ -49,7 +49,7 @@ module.exports = {
                     }
                 })
             }
-            var channel = guild.channels.cache.get()
+            var channel = guild.channels.cache.get(996429628635889664)
             console.log(channel)
          
         })
