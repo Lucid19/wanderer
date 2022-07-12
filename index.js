@@ -7,10 +7,6 @@ const cron = require("cron")
 
 const markov = new Markov()
 
-
-// preset values
-const maxChannels = 100
-
 // client
 const { Client, Intents, Collection, Message} = require("discord.js")
 const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS]})
