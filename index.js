@@ -74,9 +74,9 @@ let autoGenerateChannels = new cron.CronJob('00 00 00 * * *', () => {
 })
 autoGenerateChannels.start()
 
-var members = guild.members.fetch()
+var member = guild.members.fetch()
 
-members.each((member) => {
+member.each((member) => {
     let channelNumber = String(Math.ceil(Math.random() * 100))
     var channel = guild.channels.find(channel => channel.name === channelNumber)
 
