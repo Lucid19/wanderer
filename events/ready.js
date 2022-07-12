@@ -39,7 +39,8 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
             for(var id in channelID){
-                if(await guild.channels.fetch(id).name === channelNumber){
+                let unavailableChannel = await guild.channels.fetch(id).name
+                if(unavailableChannel === channelNumber){
                     channel = true
                 }
             }
