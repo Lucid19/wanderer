@@ -49,7 +49,7 @@ module.exports = {
             }
         
             if(!channel){
-                let result = guild.channels.create(channelNumber, {
+                let result = await guild.channels.create(channelNumber, {
                     type: "GUILD TEXT",
                     parent: config.levelID,
                     permissionOverwrite: {
