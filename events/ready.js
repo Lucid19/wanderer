@@ -1,6 +1,7 @@
 // API
 const {REST} = require("@discordjs/rest")
 const {Routes, PermissionFlagsBits} = require("discord-api-types/v9");
+const { ReturnDocument } = require("mongodb");
 
 const config = require("../config.json")
 
@@ -42,16 +43,16 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 30))
         
-            guild.channels.create(channelNumber, {
+            let result = guild.channels.create(channelNumber, {
                 type: "GUILD TEXT",
                 parent: config.levelID,
                 permissionOverwrite: {
                     id: config.GuildID,
                     deny: [PermissionFlagsBits.ViewChannel]
                 }
-            })
+            }).then(result => {return guild.channels.fetch(results.id)})
 
-            console.log(guild.channels.cache.fetch())
+            console.log(result)
          
         })
         channel = false
