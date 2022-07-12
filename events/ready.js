@@ -12,6 +12,7 @@ module.exports = {
 
         // user
         const CLIENT_ID = client.user.id
+        const guild = client.guilds.cache.get(config.GuildID)
 
         // REST API
         const rest = new REST({
@@ -31,12 +32,9 @@ module.exports = {
         }
 
         // starting up jobs
-        client.login(config.token)
-
-        const guild = client.guilds.cache.get(config.GuildID)
-        var member = guild.members.fetch()
-         
-        member.forEach((member) => {
+        var members = guild.members.fetch()
+        console.log(members)
+        members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * 100))
             var channel = guild.channels.find(channel => channel.name === channelNumber)
          
