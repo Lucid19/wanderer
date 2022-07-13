@@ -1,6 +1,6 @@
 // API
 const {REST} = require("@discordjs/rest")
-const {Routes, PermissionFlagsBits} = require("discord-api-types/v9");
+const {Routes} = require("discord-api-types/v9");
 
 const config = require("../config.json")
 
@@ -48,6 +48,8 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
             let channel = guild.channels.cache.find(channel => channel.name === channelNumber)
+            
+            channel.permissionOverwrites.edit(member.id, { VIEW_CHANNEL: true  })
         })
     }
 }
