@@ -47,6 +47,8 @@ module.exports = {
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
             let channel = guild.channels.cache.find(channel => channel.name === channelNumber)
+
+            console.log(channel.name)
         })
     }
 }
