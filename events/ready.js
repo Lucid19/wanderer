@@ -48,7 +48,7 @@ module.exports = {
 
         members.forEach( async (member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            let channel = await guild.channels.fetch().then(channel => channel.name == channelNumber)
+            let channel = await guild.channels.fetch().then(channel => {if(channel.name === "17") {return channel}})
             console.log(channel)
         })
 }
