@@ -1,4 +1,5 @@
 // API
+const { channelMention } = require("@discordjs/builders");
 const {REST} = require("@discordjs/rest")
 const {Routes} = require("discord-api-types/v9");
 
@@ -47,8 +48,7 @@ module.exports = {
 
         members.forEach( async (member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            let channel = await guild.channels.fetch()
-
+            let channel = await guild.channels.fetch().resolve(channel => channel.name == channelNumber)
             console.log(channel)
         })
 }
