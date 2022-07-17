@@ -41,4 +41,6 @@ for(const file of eventFiles){
     }
 }
 
+const guild = client.guilds.cache.get(config.GuildID).channels.cache.get().permissionOverwrites
+
 client.login(config.token)
