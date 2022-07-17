@@ -50,7 +50,7 @@ module.exports = {
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            channels.forEach((channel) => {if(channel.name == channelNumber) {channel.overwritePermissions.edit(member.id, {'VIEW_CHANNEL' : true})}})
+            channels.forEach((channel) => {if(channel.name == channelNumber) {return channel.overwritePermissions.create(member.id, {VIEW_CHANNEL : true})}})
         })
 }
 }
