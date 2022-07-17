@@ -2,6 +2,7 @@
 const { channelMention } = require("@discordjs/builders");
 const {REST} = require("@discordjs/rest")
 const {Routes} = require("discord-api-types/v9");
+const { PermissionOverwrites } = require("discord.js");
 
 const config = require("../config.json")
 
@@ -50,7 +51,7 @@ module.exports = {
 
         members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            channels.forEach((channel) => {if(channel.name === channelNumber) {return channel.overwritePermissions({id: member.id, allow: ['VIEW_CHANNEL']})}})
+            channels.forEach((channel) => {if(channel.name === channelNumber) {return channel.overwritePermissions({permissionOverwrites: [{id: member.id, allow: ['VIEW_CHANNEL']}]})}})
         })
 }
 }
