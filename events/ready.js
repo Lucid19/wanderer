@@ -46,10 +46,11 @@ module.exports = {
                 parent: config.levelID
         })}
 
-        members.forEach( async (member) => {
+        var channels = await guild.channels.fetch()
+
+        members.forEach((member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            let channel = await guild.channels.fetch().then(channel => {if(channel.name === "17") {return channel}})
-            console.log(channel)
+            channels.forEach((channel) => {if(channel.name == "17") {console.log(channel)}})
         })
 }
 }
