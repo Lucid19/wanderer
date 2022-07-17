@@ -45,9 +45,9 @@ module.exports = {
                 parent: config.levelID
         })}
 
-        members.forEach((member) => {
+        members.forEach( async (member) => {
             let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            let channel = guild.channels.cache.get()
+            let channel = await guild.channels.fetch()
 
             console.log(channel)
         })
