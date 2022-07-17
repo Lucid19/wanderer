@@ -1,6 +1,6 @@
 // API
 const {REST} = require("@discordjs/rest")
-const {Routes, PermissionFlagsBits} = require("discord-api-types/v9");
+const {Routes} = require("discord-api-types/v9");
 
 const config = require("../config.json")
 
