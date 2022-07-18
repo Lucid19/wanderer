@@ -2,7 +2,6 @@
 const {REST} = require("@discordjs/rest")
 const {Routes} = require("discord-api-types/v9");
 const { Permissions } = require("discord.js");
-const {Markov} = require("js-markov")
 
 //jobs
 const cron = require("cron")
@@ -18,9 +17,6 @@ module.exports = {
         // user
         const CLIENT_ID = client.user.id
         const guild = client.guilds.cache.get(config.GuildID)
-
-        // Markov
-        const markov = new Markov()
         
         // Channels
         const category = guild.channels.cache.get(config.levelID)

@@ -1,4 +1,6 @@
-const {markov} = require("ready.js")
+const { Markov } = require("js-markov")
+
+const markov = new Markov()
 
 module.exports = {
     name: "messageCreate",
