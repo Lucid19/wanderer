@@ -3,7 +3,7 @@ const cron = require("cron")
 
 const markov = new Markov()
 
-var sendMarkov = new cron.cronJob("0 0,15,30,45 * * * *", () => {
+var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => {
     markov.train()
     console.log(markov.generateRandom(100))
 })
