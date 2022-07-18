@@ -14,6 +14,6 @@ module.exports = {
     name: "messageCreate",
     async execute(client, message) {
         markov.addStates()
-        console.log(message)
+        console.log(client)
     }
 }
