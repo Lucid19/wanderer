@@ -19,6 +19,7 @@ module.exports = {
         const CLIENT_ID = client.user.id
         const guild = client.guilds.cache.get(config.GuildID)
 
+        // Markov
         const markov = new Markov()
         
         // Channels
@@ -57,9 +58,14 @@ module.exports = {
     
             members.forEach((member) => {
                 let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-                channels.forEach((channel) => {if(channel.name === channelNumber) {return channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])}})
+                channels.forEach((channel) => {if(channel.name === channelNumber) return channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])})
             })})
-        
+
+        var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", async () => {
+            return
+        })
+
+        sendMarkov.start()
         autoGenerateChannels.start()
 }
 }
