@@ -1,8 +1,10 @@
-// API
-const { channelMention } = require("@discordjs/builders");
+//API
 const {REST} = require("@discordjs/rest")
 const {Routes} = require("discord-api-types/v9");
 const { Permissions } = require("discord.js");
+
+//jobs
+const cron = require("cron")
 
 const config = require("../config.json")
 
@@ -38,20 +40,23 @@ module.exports = {
         }
 
         // starting up jobs
-        var members = await guild.members.fetch()
+        var autoGenerateChannels =  new cron.CronJob("0 0 0 * * *", async () => {
+            var members = await guild.members.fetch()
 
-        category.children.forEach(channel => channel.delete())
-        for(let i = 0; i <= maxChannels; i++){
-            guild.channels.create(String(i), {
-                type: "GUILD TEXT",
-                parent: config.levelID
-        })}
-
-        var channels = await guild.channels.fetch()
-
-        members.forEach((member) => {
-            let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-            channels.forEach((channel) => {if(channel.name === channelNumber) {return channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])}})
-        })
+            category.children.forEach(channel => channel.delete())
+            for(let i = 0; i <= maxChannels; i++){
+                guild.channels.create(String(i), {
+                    type: "GUILD TEXT",
+                    parent: config.levelID
+            })}
+    
+            var channels = await guild.channels.fetch()
+    
+            members.forEach((member) => {
+                let channelNumber = String(Math.ceil(Math.random() * maxChannels))
+                channels.forEach((channel) => {if(channel.name === channelNumber) {return channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])}})
+            })})
+        
+        autoGenerateChannels.start()
 }
 }
