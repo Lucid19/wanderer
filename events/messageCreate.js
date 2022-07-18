@@ -13,6 +13,7 @@ sendMarkov.start()
 module.exports = {
     name: "messageCreate",
     async execute(client, message) {
-        markov.addStates(message)
+        markov.addStates()
+        console.log(message)
     }
 }
