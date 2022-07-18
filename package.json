@@ -22,7 +22,6 @@
     "cron": "^2.0.0",
     "discord-api-types": "^0.33.1",
     "discord.js": "^13.7.0",
-    "js-markov": "^3.0.3",
-    "mongodb": "4.5"
+    "js-markov": "^3.0.3"
   }
 }

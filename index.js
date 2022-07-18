@@ -1,18 +1,10 @@
 // filesystem
 const fs = require("fs")
-const { MongoClient } = require("mongodb")
-const Markov = require("js-markov")
 const config = require("./config.json")
-const cron = require("cron")
-
-const markov = new Markov()
 
 // client
 const { Client, Intents, Collection} = require("discord.js")
 const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS]})
-
-// Database
-const clientDB = new MongoClient(config.uri);
 
 // Commands
 const commandFiles =  fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
