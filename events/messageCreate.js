@@ -1,4 +1,4 @@
-const { Markov } = require("js-markov")
+const Markov = require("js-markov")
 
 const markov = new Markov()
 
