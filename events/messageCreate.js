@@ -7,6 +7,6 @@ module.exports = {
     async execute(client, message) {
         markov.addStates("norm")
         markov.train()
-        console.log(markov.generaetRandom(100))
+        console.log(markov.generateRandom(100))
     }
 }
