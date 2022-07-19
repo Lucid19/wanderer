@@ -19,6 +19,7 @@ module.exports = {
 
         try {
             markov.addStates(message.content)
+            console.log("help me")
             if(guild) { 
                 markov.train()
                 for(i=0; i <= maxChannels; i++){
