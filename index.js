@@ -4,9 +4,7 @@ const config = require("./config.json")
 
 // client
 const { Client, Intents, Collection} = require("discord.js")
-module.exports ={
-    const :client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS]})
-}
+const client = new Client({intents:[Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS]})
 
 // Commands
 const commandFiles =  fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
@@ -36,3 +34,6 @@ for(const file of eventFiles){
 }
 
 client.login(config.token)
+
+
+module.exports = client
