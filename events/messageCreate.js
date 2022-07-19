@@ -4,7 +4,7 @@ const markov = new Markov()
 module.exports = {
     name: "messageCreate",
     async execute(message) {
-        var consoleLog = guild.channels.cache.get(config.consoleLogID)
+        var consoleLog = message.guild.channels.cache.get(config.consoleLogID)
         try {
             markov.addStates(message.content)
         }
