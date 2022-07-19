@@ -25,11 +25,6 @@ module.exports = {
             try {
                 markov.addStates(message.content)
                 console.log("help me")
-                if(guild) { 
-                    markov.train()
-                    for(i=0; i <= maxChannels; i++){
-                        let channel = guild.channels.cache.find(channel => channel.name == String(i))
-                        channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
             }
             catch(err){
                 consoleLog.send(err)
@@ -39,10 +34,11 @@ module.exports = {
 }
 
 var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => {
-    if(guild) { markov.train()
-    for(i=0; i <= maxChannels; i++){
-    let channel = guild.channels.cache.find(channel => channel.name === String(i))
-    channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
+    if(guild) { 
+        markov.train()
+        for(i=0; i <= maxChannels; i++){
+            let channel = guild.channels.cache.find(channel => channel.name == String(i))
+            channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
 })
 
 sendMarkov.start()
