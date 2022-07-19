@@ -1,5 +1,6 @@
 const Markov = require("js-markov")
 const markov = new Markov()
+const config = require("../config.json")
 
 module.exports = {
     name: "messageCreate",
@@ -15,3 +16,5 @@ module.exports = {
         }
     }
 }
+
+module.exports = {markov}
