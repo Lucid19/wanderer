@@ -25,6 +25,7 @@ module.exports = {
         // markov
         const minText = 15
         const maxText = 100
+
         const {markov} = require("../events/messageCreate")
 
         // REST API
