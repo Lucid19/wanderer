@@ -5,7 +5,6 @@ const cron = require("cron")
 const {client} = require("../index")
 
 const guild = client.guilds.cache.get(config.GuildID)
-const consoleLog = guild.channels.cache.get(config.consoleLogID)
 
 
 const maxChannels = 30
@@ -25,6 +24,7 @@ sendMarkov.start()
 module.exports = {
     name: "messageCreate",
     async execute(message) {
+        var consoleLog = guild.channels.cache.get(config.consoleLogID)
         console.log("sex")
         try {
             markov.addStates(message.content)
