@@ -30,7 +30,7 @@ for(const file of eventFiles){
     }
     else{
         client.on(event.name, (...args) => event.execute(...args, commands))
-    }
+    }  
 }
 
 client.login(config.token)
