@@ -21,6 +21,9 @@ for(const file of commandFiles){
     client.commands.set(command.data.name, command)
 }
 
+
+module.exports={client}
+
 // loading event files
 for(const file of eventFiles){
     const event = require(`./events/${file}`)
@@ -34,5 +37,3 @@ for(const file of eventFiles){
 }
 
 client.login(config.token)
-
-module.exports={client}
