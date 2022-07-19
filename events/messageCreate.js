@@ -5,6 +5,8 @@ const cron = require("cron")
 
 var guild
 var consoleLog
+var client
+var author
 
 const maxChannels = 30
 const minText = 15
@@ -16,20 +18,23 @@ module.exports = {
         // setting values on interaction
         guild = message.guild
         consoleLog = guild.channels.cache.get(config.consoleLogID)
+        client = message.client
+        author = message.author
 
-        try {
-            markov.addStates(message.content)
-            console.log("help me")
-        }
-        catch(err){
-            consoleLog.send(err)
-            markov.clearState()
-        }
-        if(guild) { 
-            markov.train()
-            for(i=0; i <= maxChannels; i++){
-            let channel = guild.channels.cache.find(channel => channel.name == String(i))
-            channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
+        if(author.id != client.user.id){
+            try {
+                markov.addStates(message.content)
+                console.log("help me")
+                if(guild) { 
+                    markov.train()
+                    for(i=0; i <= maxChannels; i++){
+                        let channel = guild.channels.cache.find(channel => channel.name == String(i))
+                        channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
+            }
+            catch(err){
+                consoleLog.send(err)
+                markov.clearState()
+            }}
     }
 }
 
