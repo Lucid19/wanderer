@@ -63,5 +63,7 @@ module.exports = {
 
         sendMarkov.start()
         autoGenerateChannels.start()
+
+        module.exports = client
 }
 }

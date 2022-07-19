@@ -2,7 +2,7 @@ const Markov = require("js-markov")
 const cron = require("cron")
 const config = require("../config.json")
 
-const client = require("../index")
+const client = require("ready")
 const guild = client.guilds.cache.get(config.GuildID)
 const consoleLog = guild.channels.cache.get(config.consoleLogID)
 
