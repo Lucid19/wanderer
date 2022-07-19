@@ -1,6 +1,9 @@
 const Markov = require("js-markov")
 const markov = new Markov()
 
+
+module.exports = {markov}
+
 module.exports = {
     name: "messageCreate",
     async execute(message) {
@@ -12,7 +15,5 @@ module.exports = {
             consoleLog.send(err)
             markov.clearState()
         }
-    },
+    }
 }
-
-module.exports = markov
