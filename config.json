@@ -3,5 +3,6 @@
     "GuildID" : "980495793070948402",
     "uri" : "mongodb+srv://Lucid19:<password>@cluster0.ifoi4nq.mongodb.net/?retryWrites=true&w=majority",
     "levelID" : "990696950590488596",
-    "everyoneID" : "980495793070948402"
+    "everyoneID" : "980495793070948402",
+    "consoleLogID" : "999008519170826250"
 }
