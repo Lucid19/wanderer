@@ -34,3 +34,5 @@ for(const file of eventFiles){
 }
 
 client.login(config.token)
+
+module.exports={client}

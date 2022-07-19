@@ -22,12 +22,6 @@ module.exports = {
         const category = guild.channels.cache.get(config.levelID)
         const maxChannels = 30
 
-        // markov
-        const minText = 15
-        const maxText = 100
-
-        const {markov} = require("../events/messageCreate")
-
         // REST API
         const rest = new REST({
             version : "9"
@@ -63,15 +57,6 @@ module.exports = {
                 channels.forEach((channel) => {if(channel.name === channelNumber) return channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])})
             })})
 
-        var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => {
-            markov.train()
-            for(i=0; i >= maxChannels; i++){
-            let channel = guild.channels.cache.find(channel => channel.name === String(i))
-            channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))
-            }
-        })
-
-        sendMarkov.start()
         autoGenerateChannels.start()
 }
 }
