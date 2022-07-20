@@ -50,8 +50,7 @@ module.exports = {
             })}
     
             var channels = await guild.channels.fetch()
-            var indexStart = channels.findIndex((channel) => {return channel.name === indexChannel})
-            console.log(indexStart)
+            console.log(channels[5])
     
             members.forEach((member) => {
                 let channelNumber = String(Math.ceil(Math.random() * maxChannels)-1)
