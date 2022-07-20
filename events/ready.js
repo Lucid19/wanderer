@@ -54,7 +54,7 @@ module.exports = {
     
             members.forEach((member) => {
                 let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-                channels.forEach((channel) => {if(channel.name === channelNumber) channel.permissionOverwrites.edit([{id: member.user.id, allow: ["VIEW_CHANNEL"]}])})
+                channels.forEach((channel) => {if(channel.name === channelNumber) channel.permissionOverwrites.edit([{id: member.user, allow: ["VIEW_CHANNEL"]}])})
             })
 
         // starting up jobs
