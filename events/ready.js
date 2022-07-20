@@ -47,7 +47,7 @@ module.exports = {
                 guild.channels.create(String(i), {
                     type: "GUILD TEXT",
                     parent: config.levelID,
-                    permissionOverwrite: {id: config.GuildID, deny: "VIEW_CHANNEL"}
+                    permissionOverwrites: [{id: config.GuildID, deny: ["VIEW_CHANNEL"]}]
             })}
     
             var channels = await guild.channels.fetch()
