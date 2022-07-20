@@ -21,6 +21,7 @@ module.exports = {
         // Channels
         const category = guild.channels.cache.get(config.levelID)
         const maxChannels = 30
+        const indexChannel = "0"
 
         // REST API
         const rest = new REST({
@@ -49,10 +50,11 @@ module.exports = {
             })}
     
             var channels = await guild.channels.fetch()
+            var indexStart = channels.forEach((channel) => {if(channel.name === indexChannel) return channel.indexOf()})
     
             members.forEach((member) => {
-                let channelNumber = String(Math.ceil(Math.random() * maxChannels))
-                channels.forEach((channel) => {if(channel.name == channelNumber) channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])})
+                let channelNumber = String(Math.ceil(Math.random() * maxChannels)-1)
+                channels[indexStart+channelNumber].permissionOverwrites.set({id: member.id, allow: Permissions.FLAGS.VIEW_CHANNEL})
             })
 
         // starting up jobs
