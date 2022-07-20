@@ -46,7 +46,10 @@ module.exports = {
             for(let i = 0; i <= maxChannels; i++){
                 guild.channels.create(String(i), {
                     type: "GUILD TEXT",
-                    parent: config.levelID
+                    parent: config.levelID,
+                    permissionOvverwrites: [{
+                        id: config.everyoneID,
+                        deny: ["VIEW_CHANNEL"]}]
             })}
     
             var channels = await guild.channels.fetch()
