@@ -53,7 +53,7 @@ module.exports = {
     
             members.forEach((member) => {
                 let channelNumber = String(Math.ceil(Math.random() * maxChannels)-1)
-                console.log(channels[5])
+                channels.forEach((channel) => {if(channel.name === channelNumber) return channel.permissionOverwrites.set([{id: member.id, allow: [Permissions.FLAGS.VIEW_CHANNEL]}])})
             })
 
         // starting up jobs
