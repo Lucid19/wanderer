@@ -24,7 +24,6 @@ module.exports = {
         if(author.id != client.user.id){
             try {
                 markov.addStates(message.content)
-                console.log("help me")
             }
             catch(err){
                 consoleLog.send(err)
