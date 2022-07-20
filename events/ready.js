@@ -50,11 +50,10 @@ module.exports = {
             })}
     
             var channels = await guild.channels.fetch()
-            console.log(channels[5])
     
             members.forEach((member) => {
                 let channelNumber = String(Math.ceil(Math.random() * maxChannels)-1)
-                channels[indexStart+channelNumber].permissionOverwrites.set({id: member.id, allow: Permissions.FLAGS.VIEW_CHANNEL})
+                console.log(channels[5])
             })
 
         // starting up jobs
