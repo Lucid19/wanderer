@@ -31,7 +31,7 @@ module.exports = {
         // registering commands
         try{
             // for guild
-            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
+            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, "999627027147673641"), {
                 body: commands
             })
             console.log("Commands ready")
