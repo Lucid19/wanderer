@@ -31,6 +31,7 @@ module.exports = {
                 console.log(err)
                 markov.clearState()
             }}
+        console.log(markov.generateRandom(100))
     }
 }
 
