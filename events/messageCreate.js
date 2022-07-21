@@ -37,7 +37,7 @@ module.exports = {
 var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => { 
     if(guild) { 
         let channel = guild.channels.cache.get("999627027147673644")
-        channel.send("If upon a time yes")}
+        channel.send(markov.generateRandom(100))}
 })
 
 sendMarkov.start()
