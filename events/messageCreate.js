@@ -20,6 +20,8 @@ module.exports = {
         consoleLog = guild.channels.cache.get(config.consoleLogID)
         client = message.client
         author = message.author
+        
+        console.log(message.content)
 
         if(author.id != client.user.id){
             try {
