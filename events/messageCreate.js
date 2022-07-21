@@ -28,7 +28,7 @@ module.exports = {
                 markov.addStates(message.content)
             }
             catch(err){
-                consoleLog.send(err)
+                console.log(err)
                 markov.clearState()
             }}
     }
