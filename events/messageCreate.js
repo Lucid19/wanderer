@@ -31,12 +31,12 @@ module.exports = {
                 console.log(err)
                 markov.clearState()
             }}
-        console.log(markov.generateRandom(100))
     }
 }
 
 var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => { 
     if(guild) { 
+        markov.train()
         let channel = guild.channels.cache.get("999627027147673644")
         channel.send(markov.generateRandom(100))}
 })
