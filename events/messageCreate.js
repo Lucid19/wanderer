@@ -32,10 +32,10 @@ module.exports = {
     }
 }
 
-var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => {
+var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => { 
     if(guild) { 
         let channel = guild.channels.cache.get("999627027147673644")
-        channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
+        channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText)))}
 })
 
 sendMarkov.start()
