@@ -13,21 +13,21 @@ module.exports = {
 
         // user
         const CLIENT_ID = client.user.id
-        const guild = client.guilds.cache.get(GuildID)
+        const guild = client.guilds.cache.get(process.env.GUILDID)
         
         // Channels
-        const category = guild.channels.cache.get(levelID)
+        const category = guild.channels.cache.get(process.env.LEVELID)
         const maxChannels = 30
 
         // REST API
         const rest = new REST({
             version : "9"
-        }).setToken(TOKEN)
+        }).setToken(process.env.TOKEN)
 
         // registering commands
         try{
             // for guild
-            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILDID), {
+            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILDID), {
                 body: commands
             })
             console.log("Commands ready")
@@ -45,7 +45,7 @@ module.exports = {
                 guild.channels.create(String(i), {
                     type: "GUILD TEXT",
                     parent: levelID,
-                    permissionOverwrites: [{id: GUILDID, deny: ["VIEW_CHANNEL"]}]
+                    permissionOverwrites: [{id: process.env.GUILDID, deny: ["VIEW_CHANNEL"]}]
             })}
     
             const channels = await guild.channels.fetch()

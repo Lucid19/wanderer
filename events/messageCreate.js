@@ -16,7 +16,7 @@ module.exports = {
     async execute(message) {
         // setting values on interaction
         guild = message.guild
-        consoleLog = guild.channels.cache.get(CONSOLELOGID)
+        consoleLog = guild.channels.cache.get(process.env.CONSOLELOGID)
         client = message.client
         author = message.author
 
