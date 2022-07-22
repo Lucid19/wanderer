@@ -21,7 +21,6 @@ module.exports = {
         // Channels
         const category = guild.channels.cache.get(config.levelID)
         const maxChannels = 30
-        const indexChannel = "0"
 
         // REST API
         const rest = new REST({
@@ -31,7 +30,7 @@ module.exports = {
         // registering commands
         try{
             // for guild
-            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
+            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, "999627027147673641"), {
                 body: commands
             })
             console.log("Commands ready")

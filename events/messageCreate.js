@@ -20,24 +20,25 @@ module.exports = {
         consoleLog = guild.channels.cache.get(config.consoleLogID)
         client = message.client
         author = message.author
+        
+        console.log(message.content)
 
         if(author.id != client.user.id){
             try {
                 markov.addStates(message.content)
             }
             catch(err){
-                consoleLog.send(err)
+                console.log(err)
                 markov.clearState()
             }}
     }
 }
 
-var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => {
+var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => { 
     if(guild) { 
         markov.train()
-        for(i=0; i <= maxChannels; i++){
-            let channel = guild.channels.cache.find(channel => channel.name == String(i))
-            channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) +  minText))}}
+        let channel = guild.channels.cache.get("999627027147673644")
+        channel.send(markov.generateRandom(100))}
 })
 
 sendMarkov.start()
