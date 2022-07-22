@@ -1,6 +1,5 @@
 // filesystem
 const fs = require("fs")
-const config = require("./config.json")
 
 // client
 const { Client, Intents, Collection} = require("discord.js")
@@ -33,4 +32,4 @@ for(const file of eventFiles){
     }  
 }
 
-client.login(config.token)
+client.login(token)

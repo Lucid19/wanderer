@@ -1,6 +1,5 @@
 const Markov = require("js-markov")
 const markov = new Markov()
-const config = require("../config.json")
 const cron = require("cron")
 
 var guild
@@ -17,11 +16,9 @@ module.exports = {
     async execute(message) {
         // setting values on interaction
         guild = message.guild
-        consoleLog = guild.channels.cache.get(config.consoleLogID)
+        consoleLog = guild.channels.cache.get(consoleLogID)
         client = message.client
         author = message.author
-        
-        console.log(message.content)
 
         if(author.id != client.user.id){
             try {
@@ -38,7 +35,7 @@ var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => {
     if(guild) { 
         markov.train()
         for(i=0; i <= maxChannels; i++){
-            let channel = guild.channels.cache.find(channel => channel.name === String(i))
+            const channel = guild.channels.cache.find(channel => channel.name === String(i))
             channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) + minText))
         }}
 })

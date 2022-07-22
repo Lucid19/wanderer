@@ -5,9 +5,6 @@ const {Routes} = require("discord-api-types/v9");
 //jobs
 const cron = require("cron")
 
-// config
-const config = require("../config.json")
-
 module.exports = {
     name : "ready",
     once : true,
@@ -16,21 +13,21 @@ module.exports = {
 
         // user
         const CLIENT_ID = client.user.id
-        const guild = client.guilds.cache.get(config.GuildID)
+        const guild = client.guilds.cache.get(GuildID)
         
         // Channels
-        const category = guild.channels.cache.get(config.levelID)
+        const category = guild.channels.cache.get(levelID)
         const maxChannels = 30
 
         // REST API
         const rest = new REST({
             version : "9"
-        }).setToken(config.token)
+        }).setToken(token)
 
         // registering commands
         try{
             // for guild
-            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.GuildID), {
+            await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GuildID), {
                 body: commands
             })
             console.log("Commands ready")
@@ -41,20 +38,20 @@ module.exports = {
 
         // starting up jobs
         var autoGenerateChannels =  new cron.CronJob("0 0 0 * * *", async () => {
-            var members = await guild.members.fetch()
+            const members = await guild.members.fetch()
 
             category.children.forEach(channel => channel.delete())
             for(let i = 0; i <= maxChannels; i++){
                 guild.channels.create(String(i), {
                     type: "GUILD TEXT",
-                    parent: config.levelID,
-                    permissionOverwrites: [{id: config.GuildID, deny: ["VIEW_CHANNEL"]}]
+                    parent: levelID,
+                    permissionOverwrites: [{id: GuildID, deny: ["VIEW_CHANNEL"]}]
             })}
     
-            var channels = await guild.channels.fetch()
+            const channels = await guild.channels.fetch()
     
             members.forEach((member) => {
-                let channelNumber = String(Math.ceil(Math.random() * maxChannels))
+                const channelNumber = String(Math.ceil(Math.random() * maxChannels))
                 channels.forEach((channel) => {if(channel.name === channelNumber) channel.permissionOverwrites.set([{id: member.user.id, allow: ["VIEW_CHANNEL"]}])})
             })})
 

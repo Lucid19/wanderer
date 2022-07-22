@@ -1,8 +1,6 @@
 {
     "token" : "OTgwNDk0NjI0NTI1MjU0NzY2.GuRrRf.ikEloCoRYSQyx-IOMt4GiFlOQYHx7Rejb7DHK4",
     "GuildID" : "980495793070948402",
-    "uri" : "mongodb+srv://Lucid19:<password>@cluster0.ifoi4nq.mongodb.net/?retryWrites=true&w=majority",
     "levelID" : "990696950590488596",
-    "everyoneID" : "980495793070948402",
     "consoleLogID" : "999008519170826250"
 }
