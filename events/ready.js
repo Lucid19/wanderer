@@ -37,7 +37,7 @@ module.exports = {
         }
 
         // starting up jobs
-        var autoGenerateChannels =  new cron.CronJob("0 0 0 * * *", async () => {
+        var autoGenerateChannels =  new cron.CronJob("0 0-59 * * * *", async () => {
             const members = await guild.members.fetch()
 
             category.children.forEach(channel => channel.delete())
