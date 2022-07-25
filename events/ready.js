@@ -18,6 +18,7 @@ module.exports = {
         // Channels
         const maxChannels = 30
         const category = guild.channels.cache.get(process.env.LEVELID)
+        const consoleLog = guild.channels.cache.get(process.env.CONSOLELOGID)
 
         // REST API
         const rest = new REST({
@@ -38,22 +39,26 @@ module.exports = {
 
         // starting up jobs
         var autoGenerateChannels =  new cron.CronJob("0 0-59 * * * *", async () => {
-            const members = await guild.members.fetch()
+            try{
+                const members = await guild.members.fetch()
 
-            category.children.forEach(channel => channel.delete())
-            for(let i = 0; i <= maxChannels; i++){
-                guild.channels.create(String(i), {
-                    type: "GUILD TEXT",
-                    parent: process.env.LEVELID,
-                    permissionOverwrites: [{id: process.env.GUILDID, deny: ["VIEW_CHANNEL"]}]
-            })}
+                category.children.forEach(channel => channel.delete())
+                for(let i = 0; i <= maxChannels; i++){
+                    guild.channels.create(String(i), {
+                        type: "GUILD TEXT",
+                        parent: process.env.LEVELID,
+                        permissionOverwrites: [{id: process.env.GUILDID, deny: ["VIEW_CHANNEL"]}]
+                })}
 
-            const channels = await guild.channels.fetch()
+                const channels = await guild.channels.fetch()
 
-            members.forEach((member) => {
+                members.forEach((member) => {
                 const channelNumber = String(Math.ceil(Math.random() * maxChannels))
-                channels.forEach((channel) => {if(channel.name === channelNumber) channel.permissionOverwrites.set([{id: member.user.id, allow: ["VIEW_CHANNEL"]}])})
-            })})
+                channels.forEach((channel) => {if(channel.name === channelNumber) channel.permissionOverwrites.set([{id: member.user.id, allow: ["VIEW_CHANNEL"]}])})})}
+            catch(err){
+                consoleLog.send(err)
+            }
+        })
         autoGenerateChannels.start()
 }
 }

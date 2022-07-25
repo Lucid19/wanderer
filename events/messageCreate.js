@@ -25,18 +25,22 @@ module.exports = {
                 markov.addStates(message.content)
             }
             catch(err){
-                console.log(err)
+                consoleLog.send(err)
                 markov.clearState()
             }}
     }
 }
 
 var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => { 
-    if(guild) { 
-        markov.train()
-        for(i=0; i <= maxChannels; i++){
-            const channel = guild.channels.cache.find(channel => channel.name === String(i))
-            channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) + minText))
+    if(guild) {
+        try{
+            markov.train()
+            for(i=0; i <= maxChannels; i++){
+                const channel = guild.channels.cache.find(channel => channel.name === String(i))
+                channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) + minText))
+        }}
+        catch(err){
+            consoleLog.send(err)
         }}
 })
 
