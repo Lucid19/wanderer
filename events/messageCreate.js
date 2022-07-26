@@ -20,7 +20,7 @@ module.exports = {
         client = message.client
         author = message.author
 
-        if(author.id != client.user.id & process.env.DISBOARD){
+        if(author.id != client.user.id && author.id != process.env.DISBOARD){
             try {
                 markov.addStates(message.content)
             }
