@@ -9,7 +9,7 @@ module.exports = {
     name : "ready",
     once : true,
     async execute(client, commands){
-        console.log("bot is ready!");
+        console.log("bot is ready!")
 
         // user
         const CLIENT_ID = client.user.id
