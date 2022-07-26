@@ -33,15 +33,16 @@ module.exports = {
 
 var sendMarkov = new cron.CronJob("0 0,15,30,45 * * * *", () => { 
     if(guild) {
-        try{
             markov.train()
             for(i=0; i <= maxChannels; i++){
-                const channel = guild.channels.cache.find(channel => channel.name === String(i))
-                channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) + minText))
-        }}
-        catch(err){
-            consoleLog.send(err)
-        }}
-})
+                try{
+                    guild.channels.cache.find(channel => {if (channel.name === String(i)) channel.send(markov.generateRandom(Math.ceil(Math.random() * (maxText - minText)) + minText))})
+                }
+                catch(err){
+                    consoleLog.send(err)
+                }
+            }
+        }
+    })
 
 sendMarkov.start()

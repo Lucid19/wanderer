@@ -38,7 +38,7 @@ module.exports = {
         }
 
         // starting up jobs
-        var autoGenerateChannels =  new cron.CronJob("30 0 0 * * *", async () => {
+        var autoGenerateChannels =  new cron.CronJob("0 0 0 * * *", async () => {
             try{
                 const members = await guild.members.fetch()
 
