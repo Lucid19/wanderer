@@ -7,7 +7,7 @@ var consoleLog
 var client
 var author
 
-const maxChannels = 30
+const maxChannels = 20
 const minText = 15
 const maxText = 100
 
@@ -20,7 +20,7 @@ module.exports = {
         client = message.client
         author = message.author
 
-        if(author.id != client.user.id){
+        if(author.id != client.user.id & process.env.DISBOARD){
             try {
                 markov.addStates(message.content)
             }

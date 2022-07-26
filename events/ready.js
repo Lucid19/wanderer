@@ -16,7 +16,7 @@ module.exports = {
         const guild = client.guilds.cache.get(process.env.GUILDID)
         
         // Channels
-        const maxChannels = 30
+        const maxChannels = 20
         const category = guild.channels.cache.get(process.env.LEVELID)
         const consoleLog = guild.channels.cache.get(process.env.CONSOLELOGID)
 
@@ -47,7 +47,9 @@ module.exports = {
                 guild.channels.create(String(i), {
                     type: "GUILD TEXT",
                     parent: process.env.LEVELID,
-                    permissionOverwrites: [{id: process.env.GUILDID, deny: ["VIEW_CHANNEL"]}]
+                    permissionOverwrites: [
+                        {id: process.env.GUILDID, deny: ["VIEW_CHANNEL"]},
+                        {id: process.env.DISBOARD, allow: ["VIEW_CHANNEL"]}]
             })}
 
             const channels = await guild.channels.fetch()
