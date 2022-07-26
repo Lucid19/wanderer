@@ -18,7 +18,7 @@ module.exports = {
         // Channels
         const maxChannels = 30
         const category = guild.channels.cache.get(process.env.LEVELID)
-        const consoleLog = con
+        const consoleLog = guild.channels.cache.get(process.env.CONSOLELOGID)
 
         // REST API
         const rest = new REST({
